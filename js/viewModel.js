@@ -1,3 +1,6 @@
+var dados;
+var cones = []; 
+
 function Cone(nome, apelido,img, pontuacao, acumulado){
 	_this = this; 
 	_this.nome = nome;
@@ -5,27 +8,57 @@ function Cone(nome, apelido,img, pontuacao, acumulado){
 	_this.img = "images/cones/" + img;
 	_this.pontuacao = pontuacao;
 	_this.acumulado = acumulado;
+}
 
-	_this.getPorcentagem = function(){
-		var out = 
-		conesole.log(out);
-		return "100%";
+function getDados(callback){
+	var url = "https://raw.githubusercontent.com/erickLFLopes/ConeBoard/a0110d58cc6b73728bd7ac09aa8be347d9999b35/data/data.json";
+	var xhttp = new XMLHttpRequest();
+	
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			dados = JSON.parse(this.responseText);
+			if(typeof callback === 'function'){
+				callback();
+			}
+		}
+	}; 
+	
+	xhttp.open("GET", url, true);
+	xhttp.send();
+}
+
+
+function getCones(arr){
+	
+	for(var i = 0; i < dados.cones.length; i++){
+		arr.push(new Cone(
+			dados.cones[i].nome,
+			dados.cones[i].apelido,
+			dados.cones[i].img,
+			dados.cones[i].pontuacao,
+			dados.cones[i].pontuacao
+		))
 	}
 }
+// getDados();
 
 function coneBoardViewModel(){
 	_this = this; 
 	
-	_this.cones = ko.observableArray([
-		new Cone('Érick','Conerick','conerick.jpg',	'10','55'),
-		new Cone('Jacques','Jacone','jacone.png','3','23'),
-		new Cone('Fernando','Conando','conando.png','3','23'),
-		new Cone('Patzdorf','PatzCone','patzcone.jpg',null,'23'),
-		new Cone('Orlando','OrlanCone','orlancone.jpg','3','23'),
-		new Cone('Robledo','CastorCone','castorcone.jpg','3','23'),
-		new Cone('Bernardo','bernacone','bernacone.jpg','3','23'),
-	]);
-	_this.maxPontuacao = 10;
+
+	this.cones = ko.observableArray([]);
+	getDados(function(){
+		for(var i = 0; i < dados.cones.length; i++){
+			_this.cones.push(new Cone(
+				dados.cones[i].nome,
+				dados.cones[i].apelido,
+				dados.cones[i].img,
+				dados.cones[i].pontuacao,
+				dados.cones[i].pontuacao
+			))
+		}
+	});
+	this.maxPontuacao = 10;
 	
 	this.getPorcentagem = function(p){
 		if(!p) {
