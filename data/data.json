@@ -119,5 +119,29 @@
 				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/"
 			}
 		]}
+	],
+	"historicoDeResultados":[
+		{
+			"mes":"08",
+			"ano":"2018",
+			"vencedores":[
+				{"nome":"orlancone"},
+				{"nome":"conando"},
+			]
+		},
+		{
+			"mes":"07",
+			"ano":"2018",
+			"vencedores":[
+				{"nome":"conerick"}
+			]
+		},
+		{
+			"mes":"06",
+			"ano":"2018",
+			"vencedores":[
+				{"nome":"conerick"}
+			]
+		},
 	]
 }
