@@ -24,14 +24,14 @@
 			
 	
 			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2">
-				<h1 class="site-title"><a href="index.html"><em class="fa fa-rocket"></em> Cone Board</a></h1>
+				<h1 class="site-title"><img data-bind="attr:{src: cone}" alt="">Cone Board</h1>
 													
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
 				<ul class="nav nav-pills flex-column sidebar-nav">
-					<li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-dashboard"></em> Rank Atual <span class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="widgets.html"><em class="fa fa-calendar-o"></em> Vencedores </a></li>
+					<li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-dashboard"></em> Dash de Conisses <span class="sr-only">(current)</span></a></li>
+					<!-- <li class="nav-item"><a class="nav-link" href="widgets.html"><em class="fa fa-calendar-o"></em> Vencedores </a></li>
 					<li class="nav-item"><a class="nav-link" href="charts.html"><em class="fa fa-bar-chart"></em> Coneiros </a></li>
-					<!-- <li class="nav-item"><a class="nav-link" href="buttons.html"><em class="fa fa-hand-o-up"></em> Buttons</a></li>
+					<li class="nav-item"><a class="nav-link" href="buttons.html"><em class="fa fa-hand-o-up"></em> Buttons</a></li>
 					<li class="nav-item"><a class="nav-link" href="forms.html"><em class="fa fa-pencil-square-o"></em> Forms</a></li>
 					<li class="nav-item"><a class="nav-link" href="cards.html"><em class="fa fa-clone"></em> Cards</a></li> -->
 				</ul>
@@ -55,7 +55,7 @@
 								<div class="card mb-4">
 									<div class="card-block">
 										
-										<h3 class="card-title">Rank de Coneiros do mês Outubro </h3>
+										<h3 class="card-title">Rank (Outubro) </h3>
 										<h6 class="card-subtitle mb-2 text-muted">A Competição mais emocionante da Compassito lol hehe </h6>
 										
 										<!-- ko foreach: cones -->
@@ -84,30 +84,10 @@
 							<div class="col-md-12 col-lg-4">
 								<div class="card mb-4">
 									<div class="card-block">
-										<h3 class="card-title">Top 3 - Coneiros </h3>
-										<h6 class="card-subtitle mb-2 text-muted">Maiores vencedores </h6>
-										<div class="user-progress justify-center">
-											<div class="col-sm-3 col-md-2" style="padding: 0;">
-												<img src="images/profile-pic.jpg" alt="profile photo" class="circle profile-photo" style="width: 100%; max-width: 100px;">
-											</div>
-											<div class="col-sm-9 col-md-10">
-												<h6 class="pt-1">Username 1</h6>
-												<div class="progress progress-custom">
-													<div class="progress-bar bg-primary" style="width: 75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-												</div>
-											</div>
-										</div>
-										<div class="user-progress justify-center">
-											<div class="col-sm-3 col-md-2" style="padding: 0;">
-												<img src="images/profile-pic.jpg" alt="profile photo" class="circle profile-photo" style="width: 100%; max-width: 100px;">
-											</div>
-											<div class="col-sm-9 col-md-10">
-												<h6 class="pt-1">Username 2</h6>
-												<div class="progress progress-custom">
-													<div class="progress-bar bg-primary" style="width: 50%" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-												</div>
-											</div>
-										</div>
+										<h3 class="card-title">Top 3</h3>
+										<h6 class="card-subtitle mb-2 text-muted">Vencedores</h6>
+										
+										<!-- TODO -->
 										<div class="user-progress justify-center">
 											<div class="col-sm-3 col-md-2" style="padding: 0;">
 												<img src="images/profile-pic.jpg" alt="profile photo" class="circle profile-photo" style="width: 100%; max-width: 100px;">
@@ -119,6 +99,7 @@
 												</div>
 											</div>
 										</div>
+
 									</div>
 								</div>
 							</div>
