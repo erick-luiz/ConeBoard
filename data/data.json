@@ -126,7 +126,7 @@
 			"ano":"2018",
 			"vencedores":[
 				{"nome":"orlancone"},
-				{"nome":"conando"},
+				{"nome":"conando"}
 			]
 		},
 		{
@@ -142,6 +142,6 @@
 			"vencedores":[
 				{"nome":"conerick"}
 			]
-		},
+		}
 	]
 }
