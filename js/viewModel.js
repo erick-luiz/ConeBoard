@@ -11,17 +11,39 @@ for(i = 0; i < imagesCone.length; i++){
 	imagesCone[i].src = coneStar;
 }
 
+var mesCorrente = parseInt(new Date().getMonth() + 1);
 var dados;
 var cones = []; 
 
-function Cone(nome, apelido,img, pontuacao, acumulado){
+function Cone(nome, apelido,img, pontuacao, conisses){
  
+ 	// self = this;
 	this.nome = nome || '';
 	this.apelido = apelido || '';
-	this.img = "images/cones/" + img || 'default.jpg';
-	this.pontuacao = pontuacao || 0;
-	this.acumulado = acumulado || 0;
+	var img = img == '' || !img ? 'default.jpg':img;
+	this.img = "images/cones/" + img ;
+	this.conisses  = conisses;
+	if(typeof conisses !== "object"){
+		this.conisses  = [];
+	}
+	// this.acumulado = acumulado || 0;
 
+	this.getConissesDoMes = function(mes){
+		var out = [];
+		var mes = mes || mesCorrente;
+		for(var i = 0; i < this.conisses.length; i++){
+			var mesConisse = parseInt(this.conisses[i].data.split(/-/)[1]);
+			console.log(mesConisse, mes);
+			if(mesConisse === mes){
+				out.push(this.conisses[i]);
+			}
+		}
+		return out;
+	}
+	this.pontuacao = ko.computed(function(){
+		var aux = this.getConissesDoMes();
+		return aux.length;
+	}, this);
 }
 
 function getDados(callback){
@@ -41,36 +63,20 @@ function getDados(callback){
 	xhttp.send();
 }
 
-
-function getCones(arr){
-	
-	for(var i = 0; i < dados.cones.length; i++){
-		arr.push(new Cone(
-			dados.cones[i].nome,
-			dados.cones[i].apelido,
-			dados.cones[i].img,
-			dados.cones[i].pontuacao,
-			dados.cones[i].pontuacao
-		))
-	}
-}
-
-
 function coneBoardViewModel(){
 	self = this; 
 	
 	this.cones =  ko.observableArray([]);
-
+	self.mesVigente = ko.observable(parseInt(new Date().getMonth() + 1));
 	var cones = []; 
 	getDados(function(){
-		// self = _this;
 		for(var i = 0; i < dados.cones.length; i++){
 			self.cones.push(new Cone(
 				dados.cones[i].nome,
 				dados.cones[i].apelido,
 				dados.cones[i].img,
 				dados.cones[i].pontuacao,
-				dados.cones[i].pontuacao
+				dados.cones[i].conisses
 			));
 		}
 	});
