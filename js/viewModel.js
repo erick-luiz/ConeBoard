@@ -15,12 +15,13 @@ var dados;
 var cones = []; 
 
 function Cone(nome, apelido,img, pontuacao, acumulado){
-	_this = this; 
-	_this.nome = nome;
-	_this.apelido = apelido;
-	_this.img = "images/cones/" + img;
-	_this.pontuacao = pontuacao;
-	_this.acumulado = acumulado;
+ 
+	this.nome = nome || '';
+	this.apelido = apelido || '';
+	this.img = "images/cones/" + img || 'default.jpg';
+	this.pontuacao = pontuacao || 0;
+	this.acumulado = acumulado || 0;
+
 }
 
 function getDados(callback){
@@ -53,7 +54,7 @@ function getCones(arr){
 		))
 	}
 }
-// getDados();
+
 
 function coneBoardViewModel(){
 	self = this; 
@@ -74,15 +75,26 @@ function coneBoardViewModel(){
 		}
 	});
 	
+
+	this.coneDestacado = ko.observable(new Cone());
+
+
 	this.maxPontuacao = 10;
-	this.getPorcentagem = function(p){
+	self.getPorcentagem = function(p){
 		if(!p) {
 			console.warn('Pontuacao indefinida para calculo!'); 
 			return "0%";
 		}
 		return ((p/self.maxPontuacao)*100)+'%';;
 	}
-/*	_this.maxPontuacao = ko.computed(function(){
+
+	self.destacaCone = function(){
+		self.coneDestacado(this);
+		return; 
+	}
+
+/*	
+_this.maxPontuacao = ko.computed(function(){
 		var max = 0; 
 		for(var i = 0; i < _this.cones().length; i++){
 			max = max > _this.cones().pontuacao?max:_this.cones().pontuacao; 
@@ -90,4 +102,5 @@ function coneBoardViewModel(){
 		return max; 
 	});*/
 }
+
 ko.applyBindings(new coneBoardViewModel());
