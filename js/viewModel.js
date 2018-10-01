@@ -27,7 +27,7 @@ function Cone(nome, apelido,img, pontuacao, conisses){
 		this.img = img;
 	}else{
 		var img = img == '' || !img ? 'default.jpg':img;
-		this.img = "images/cones/" + img ;
+		this.img = "https://raw.githubusercontent.com/erickLFLopes/ConeBoard/master/images/cones/" + img ;
 	}
 
 	this.conisses  = conisses;
