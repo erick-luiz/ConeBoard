@@ -52,6 +52,7 @@ function Cone(nome, apelido,img, pontuacao, conisses){
 		var aux = this.getConissesDoMes();
 		return aux.length;
 	}, this);
+
 }
 
 function getDados(callback){
@@ -109,6 +110,16 @@ function coneBoardViewModel(){
 	self.destacaCone = function(){
 		self.coneDestacado(this);
 		return; 
+	}
+
+	self.ajustaApelido = function(apelido, pontuacao){
+		console.log(pontuacao);
+		if(pontuacao > 1){
+			return apelido + " (" + pontuacao + " PONTOS)";
+		}else if(pontuacao == 1){
+			return apelido + " (" + pontuacao + " PONTO)";
+		}
+		return apelido;
 	}
 
 /*	
