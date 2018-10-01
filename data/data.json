@@ -89,7 +89,7 @@
 		]},
 		{
 			"nome":"",
-			"apelido":"castorcone",
+			"apelido":"Conedo Castor",
 			"pontuacao":"4",
 			"img":"castorcone.jpg",
 			"conisses":[
@@ -136,7 +136,7 @@
 		]},
 		{
 			"nome":"",
-			"apelido":"conila",
+			"apelido":"KamiCone",
 			"pontuacao":"1",
 			"img":"",
 			"conisses":[
@@ -150,7 +150,84 @@
 				"titulo":"Deixou cair café no teclado",
 				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/"
 			}
-		]}
+		]},
+		{
+			"nome":"",
+			"apelido":"Mifone",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		},
+		{
+			"nome":"",
+			"apelido":"JesusCone",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		},
+		{
+			"nome":"",
+			"apelido":"Conyreli",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		},
+		{
+			"nome":"",
+			"apelido":"Monecone",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		},
+		{
+			"nome":"",
+			"apelido":"BerLuzCone",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		},
+		{
+			"nome":"",
+			"apelido":"Tymone",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		},
+		{
+			"nome":"",
+			"apelido":"Pedrone",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		},
+		{
+			"nome":"",
+			"apelido":"Sandrone",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		},
+		{
+			"nome":"",
+			"apelido":"Evandrone",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		},
+		{
+			"nome":"",
+			"apelido":"Coninson",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		},
+		{
+			"nome":"",
+			"apelido":"Sicone",
+			"pontuacao":"1",
+			"img":"",
+			"conisses":[]
+		}
 	],
 	"historicoDeResultados":[
 		{
