@@ -29,12 +29,12 @@
 				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/"
 			},
 			{
-				"data":"2018-10-02",
+				"data":"2018-09-02",
 				"titulo":"Deixou cair café no teclado",
 				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/"
 			},
 			{
-				"data":"2018-10-02",
+				"data":"2018-09-02",
 				"titulo":"Deixou cair café no teclado",
 				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/",
 				"estrela":"TRUE"
@@ -60,7 +60,7 @@
 			"img":"bernacone.jpg",
 			"conisses":[
 			{
-				"data":"2018-10-02",
+				"data":"2018-09-02",
 				"titulo":"Revista inesperada",
 				"descricao":"Quase foi revistado por uma policial disfarçada na festa kkkk"
 			},
@@ -77,7 +77,7 @@
 			"img":"orlancone.jpg",
 			"conisses":[
 			{
-				"data":"2018-10-02",
+				"data":"2018-09-02",
 				"titulo":"Deixou cair café no teclado",
 				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/"
 			},
@@ -112,14 +112,10 @@
 			"img":"patzcone.jpg",
 			"conisses":[
 			{
-				"data":"2018-04-02",
-				"titulo":"Deixou cair café no teclado",
-				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/"
-			},
-			{
-				"data":"2018-04-02",
-				"titulo":"Deixou cair café no teclado",
-				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/"
+				"data":"2018-10-01",
+				"titulo":"Compra desnecessária",
+				"descricao":"Comprou um botijão de gás para o apartamento novo, depois ele verificou os itens que vem no AP! Adivinha: vinha o gás kkkk ",
+				"estrela":"TRUE"
 			}
 		]},
 		{
