@@ -15,13 +15,21 @@ var mesCorrente = parseInt(new Date().getMonth() + 1);
 var dados;
 var cones = []; 
 
+var regexImg = new RegExp(/(^data)/i);
+
 function Cone(nome, apelido,img, pontuacao, conisses){
- 
+ 	
  	// self = this;
 	this.nome = nome || '';
 	this.apelido = apelido || '';
-	var img = img == '' || !img ? 'default.jpg':img;
-	this.img = "images/cones/" + img ;
+	
+	if(regexImg.test(img)){
+		this.img = img;
+	}else{
+		var img = img == '' || !img ? 'default.jpg':img;
+		this.img = "images/cones/" + img ;
+	}
+
 	this.conisses  = conisses;
 	if(typeof conisses !== "object"){
 		this.conisses  = [];
@@ -68,7 +76,6 @@ function coneBoardViewModel(){
 	
 	this.cones =  ko.observableArray([]);
 	self.mesVigente = ko.observable(parseInt(new Date().getMonth() + 1));
-	var cones = []; 
 	getDados(function(){
 		for(var i = 0; i < dados.cones.length; i++){
 			self.cones.push(new Cone(
@@ -79,6 +86,11 @@ function coneBoardViewModel(){
 				dados.cones[i].conisses
 			));
 		}
+		var cones = self.cones(); 
+		cones.sort(function(a,b){
+			return a.pontuacao() < b.pontuacao()?1:-1;;
+		});
+		self.cones(cones);
 	});
 	
 
