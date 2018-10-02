@@ -76,6 +76,7 @@ function getDados(callback){
 
 function coneBoardViewModel(){
 	self = this; 
+	self.pathImage = "https://raw.githubusercontent.com/erickLFLopes/ConeBoard/master/images/cones/";
 	
 	this.cones =  ko.observableArray([]);
 	self.vencedores = ko.observableArray([]);
@@ -135,7 +136,13 @@ function coneBoardViewModel(){
 		}
 		return apelido;
 	}
-
+	self.ajustaImagem = function(img){
+		if(img && img !== ''){
+			return self.pathImage + img;
+		}else{
+			return self.pathImage + 'default.jpg';
+		}
+	}
 
 /*	
 _this.maxPontuacao = ko.computed(function(){
