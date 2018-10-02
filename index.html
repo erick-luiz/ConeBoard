@@ -59,77 +59,45 @@
 										<h6 class="card-subtitle mb-2 text-muted">A Competição mais emocionante da Compassito lol hehe </h6>
 										
 										<!-- ko foreach: cones -->
-										<a href="#" data-bind="click: $parent.destacaCone">
+										<a href="#" data-bind="click: $parent.exibeConisses">
 											<div class="user-progress justify-center">
 												<div class="col-sm-3 col-md-2" style="padding: 0;">
 													<img data-bind="attr:{src: img}" alt="profile photo" class="circle profile-photo" style="width: 100%; max-width: 100px;">
 												</div>
 												<div class="col-sm-9 col-md-10">
-													<h6 class="pt-1" data-bind="text: $parent.ajustaApelido(apelido, pontuacao())"></h6>
+													<h6 class="pt-1">
+														<span data-bind="text: $parent.ajustaApelido(apelido, pontuacao())"></span>
+														<!-- ko foreach:getConissesDoMes() -->
+															<img data-bind="attr:{src: $data.estrela? coneStar: cone}, style:{width:'27px'}" alt="">
+														<!-- /ko -->
+													</h6>
 													<div class="progress progress-custom">
 														<div class="progress-bar bg-primary" data-bind="style:{width: $parent.getPorcentagem(pontuacao())}"  role="progressbar"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 													</div>
 												</div>
+
 											</div>
 										</a>
+											<!-- ko if:pontuacao() > 0 -->
+											<div data-bind="visible:conissesVisivel() ,template: { name: 'template-conisse'}"></div>
+											<!-- /ko -->
 										<!-- /ko -->
 
 									</div>
 								</div>
 							</div>
-						<div class="card mb-4" data-bind="visible: coneDestacado().pontuacao() > 0">
-							<div class="card-block">
-								<h3 class="card-title" data-bind="text: coneDestacado().apelido"></h3>
-								<h6 class="card-subtitle mb-2 text-muted">Mês Out</h6>
-								
-								<!-- ko foreach: coneDestacado().getConissesDoMes() -->
-								<div class="divider" style="margin-top: 1rem;"></div>
-								<div class="articles-container">
-									<div class="article border-bottom">
-										<div class="col-xs-12">
-											<div class="row">
-												<div class="col-2 date">
-													<img data-bind="attr:{src: $data.estrela? coneStar: cone}" alt="">
-													<div class="large" data-bind="text: data.split(/-/)[2]"></div>
-													<div class="text-muted">out</div>
-												</div>
-												<div class="col-10">
-													<h4><a href="#" data-bind="text: titulo"></a></h4>
-													<p data-bind="text: descricao"></p>
-												</div>
-											</div>
-										</div>
-										<div class="clear"></div>
-									</div><!--End .article-->
-								</div>
-								<!-- /ko -->
-							</div>
-						</div>
-
 
 							<!-- Aqui entra as conisses invisivel até que se selecione um coneiro -->
 							</div>
+
 							<div class="col-md-12 col-lg-4">
 								<div class="card mb-4">
 									<div class="card-block">
-										<h3 class="card-title">Top 3</h3>
-										<h6 class="card-subtitle mb-2 text-muted">Vencedores</h6>
-										<h6 class="card-subtitle mb-2 text-muted">EM desenvolvimento :/</h6>
-										
-										
-										<div class="user-progress justify-center">
-											<div class="col-sm-3 col-md-2" style="padding: 0;">
-												<img src="images/cones/default.jpg" alt="profile photo" class="circle profile-photo" style="width: 100%; max-width: 100px;">
-											</div>
-											<div class="col-sm-9 col-md-10">
-												<h6 class="pt-1">Username 3</h6>
-												<div class="progress progress-custom">
-													<div class="progress-bar bg-primary" style="width: 25%" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-												</div>
-											</div>
-										</div>
-										
-
+										<h3 class="card-title">Vencedores</h3>
+										<h6 class="card-subtitle mb-2 text-muted">Só Coneiro de Responsa haha</h6>
+										<!-- ko foreach: vencedores() -->
+											<div data-bind="template: { name: 'template-vencedores'}"></div>
+										<!-- /ko -->
 									</div>
 								</div>
 							</div>
@@ -143,6 +111,44 @@
 			</main>
 		</div>
 	</div>
+	
+	
+	<!-- Templates -->
+	<script type="text/html" id="template-conisse">
+		<div class="card-block">
+			<div class="articles-container">
+				<div class="article border-bottom">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="col-2 date"></div>
+							<div class="col-10">
+								<!-- ko foreach:getConissesDoMes() -->
+									<p>
+										<img data-bind="attr:{src: $data.estrela? coneStar: cone}, style:{width:'27px'}" alt="">
+										<span data-bind="text: '['+data+'] ' + titulo+ ': ' + descricao"></span>
+									</p>
+								<!-- /ko -->
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="template-vencedores">
+		<span data-bind="text:mes"></span>
+				<!-- ko foreach: vencedores-->
+				<div class="user-progress justify-center">
+					<div class="col-sm-3 col-md-2" style="padding: 0;">
+						<img src="images/cones/default.jpg" alt="profile photo" class="circle profile-photo" style="width: 100%; max-width: 100px;">
+					</div>
+					<div class="col-sm-9 col-md-10">
+						<h6 class="pt-1" data-bind="text:nome"></h6>
+					</div>
+				</div>
+				<!-- /ko -->
+	</script>
 
 	<script src="js/knockout.js"></script>
 	<script src="js/viewModel.js"></script>

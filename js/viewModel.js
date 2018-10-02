@@ -22,7 +22,9 @@ function Cone(nome, apelido,img, pontuacao, conisses){
  	// self = this;
 	this.nome = nome || '';
 	this.apelido = apelido || '';
-	
+	this.conissesVisivel = ko.observable(false);
+
+
 	if(regexImg.test(img)){
 		this.img = img;
 	}else{
@@ -41,14 +43,14 @@ function Cone(nome, apelido,img, pontuacao, conisses){
 		var mes = mes || mesCorrente;
 		for(var i = 0; i < this.conisses.length; i++){
 			var mesConisse = parseInt(this.conisses[i].data.split(/-/)[1]);
-			console.log(mesConisse, mes);
+
 			if(mesConisse === mes){
 				out.push(this.conisses[i]);
 			}
 		}
 		return out;
 	}
-	this.pontuacao = ko.computed(function(){
+	this.pontuacao = ko.pureComputed(function(){
 		var aux = this.getConissesDoMes();
 		return aux.length;
 	}, this);
@@ -76,6 +78,7 @@ function coneBoardViewModel(){
 	self = this; 
 	
 	this.cones =  ko.observableArray([]);
+	self.vencedores = ko.observableArray([]);
 	self.mesVigente = ko.observable(parseInt(new Date().getMonth() + 1));
 	getDados(function(){
 		for(var i = 0; i < dados.cones.length; i++){
@@ -92,11 +95,22 @@ function coneBoardViewModel(){
 			return a.pontuacao() < b.pontuacao()?1:-1;;
 		});
 		self.cones(cones);
+		self.vencedores(dados.historicoDeResultados);
 	});
 	
-
-	this.coneDestacado = ko.observable(new Cone());
-
+	self.coneEmDestaque = new Cone();
+	self.exibeConisses = function(cone, event){
+		event.preventDefault();
+		if(cone.pontuacao() > 0){	
+			if(cone.conissesVisivel()){
+				cone.conissesVisivel(false);
+			}else{
+				self.coneEmDestaque.conissesVisivel(false); 
+				self.coneEmDestaque = cone;
+				cone.conissesVisivel(true);
+			}
+		}
+	}
 
 	this.maxPontuacao = 10;
 	self.getPorcentagem = function(p){
@@ -113,7 +127,7 @@ function coneBoardViewModel(){
 	}
 
 	self.ajustaApelido = function(apelido, pontuacao){
-		console.log(pontuacao);
+
 		if(pontuacao > 1){
 			return apelido + " (" + pontuacao + " PONTOS)";
 		}else if(pontuacao == 1){
@@ -121,6 +135,7 @@ function coneBoardViewModel(){
 		}
 		return apelido;
 	}
+
 
 /*	
 _this.maxPontuacao = ko.computed(function(){

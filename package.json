@@ -1,0 +1,23 @@
+{
+  "name": "ConeBoard",
+  "version": "1.0.0",
+  "description": "Para sua conisse diária!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erickLFLopes/ConeBoard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erickLFLopes/ConeBoard/issues"
+  },
+  "homepage": "https://github.com/erickLFLopes/ConeBoard#readme",
+  "dependencies": {
+    "minifier": "^0.8.1"
+  }
+}

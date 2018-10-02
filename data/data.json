@@ -124,9 +124,9 @@
 			"img":"conando.png",
 			"conisses":[
 			{
-				"data":"2018-04-02",
-				"titulo":"Deixou cair café no teclado",
-				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/"
+				"data":"2018-10-01",
+				"titulo":"COMMIT Errado",
+				"descricao":"Commitou na Master: Errou kkkk"
 			},
 			{
 				"data":"2018-04-02",
@@ -252,25 +252,52 @@
 	],
 	"historicoDeResultados":[
 		{
+			"mes":"09",
+			"ano":"2018",
+			"vencedores":[
+				{"nome":"orlancone", "img":"orlancone.jpg"}
+			]
+		},
+		{
 			"mes":"08",
 			"ano":"2018",
 			"vencedores":[
-				{"nome":"orlancone"},
-				{"nome":"conando"}
+				{"nome":"Conerick","img":"conerick.jpg"}
 			]
 		},
 		{
 			"mes":"07",
 			"ano":"2018",
 			"vencedores":[
-				{"nome":"conerick"}
+				{"nome":"Conerick","img":"conerick.jpg"}
 			]
 		},
 		{
 			"mes":"06",
 			"ano":"2018",
 			"vencedores":[
-				{"nome":"conerick"}
+				{"nome":"Orlancone","img":"orlancone.jpg"}
+			]
+		},
+		{
+			"mes":"05",
+			"ano":"2018",
+			"vencedores":[
+				{"nome":"Bernacone","img":"bernacone.jpg"}
+			]
+		},
+		{
+			"mes":"04",
+			"ano":"2018",
+			"vencedores":[
+				{"nome":"patzcone","img":"patzcone.JPG"}
+			]
+		},
+		{
+			"mes":"03",
+			"ano":"2018",
+			"vencedores":[
+				{"nome":"Bernacone", "img":"bernacone.jpg"}
 			]
 		}
 	]
