@@ -7,9 +7,10 @@
 			"img":"conerick.jpg",
 			"conisses":[
 			{
-				"data":"2018-09-02",
-				"titulo":"Deixou cair café no teclado",
-				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/"
+				"data":"2018-10-02",
+				"titulo":"Impressão Necessária",
+				"descricao":"Após ser instruído para não imprimir a passagem, chega faceiro no dia dizendo pro castor conedo: Já mandei imprimir a minha, quer que eu imprima a sua? kkkkk pode piorar, mandou imprimir com as instruções de viajem :/",
+				"estrela":"TRUE"
 			},
 			{
 				"data":"2018-09-02",
@@ -132,7 +133,7 @@
 				"data":"2018-04-02",
 				"titulo":"Deixou cair café no teclado",
 				"descricao":"Após se enlouquecer com uma piada, me deixa cair café no teclado bem louco! :/",
-				"estrela":"true"
+				"estrela":"TRUE"
 			}
 		]},
 		{
