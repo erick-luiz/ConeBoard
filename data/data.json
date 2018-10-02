@@ -127,7 +127,8 @@
 			{
 				"data":"2018-10-01",
 				"titulo":"COMMIT Errado",
-				"descricao":"Commitou na Master: Errou kkkk"
+				"descricao":"Commitou na Master: Errou kkkk",
+				"estrela":"TRUE"
 			},
 			{
 				"data":"2018-04-02",
