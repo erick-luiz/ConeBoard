@@ -13,6 +13,18 @@
 				"estrela":"TRUE"
 			},
 			{
+				"data":"2018-10-09",
+				"titulo":"Após 3 litros de chopp",
+				"descricao":"Não pegou a nota da janta e vai ter que pagar :/",
+				"estrela":"TRUE"
+			},
+			{
+				"data":"2018-10-09",
+				"titulo":"Após 3 litros de chopp",
+				"descricao":"Chamou o uber, e com o carro estacionado na frente dele, continuou esperando :/",
+				"estrela":"TRUE"
+			},
+			{
 				"data":"2018-10-08",
 				"titulo":"Não conseguiu entrar no quarto do Hotel ",
 				"descricao":"Muito inteligente, inseriu o cartão e ficou esperando liberar!:/"
@@ -104,6 +116,12 @@
 				"titulo":"Desligou o pc do coleguinha",
 				"descricao":"Após trocar de lugar, foi ligar seu equipamento e, na tentativa de desligar um monitor, desligou sem piedade o pc do coleguinha",
 				"estrela":"TRUE"
+			},
+			{
+				"data":"2018-10-09",
+				"titulo":"Pagou no uber pessoal",
+				"descricao":"Voltando da janta no deslocamento pagou com Uber pessoal :/ ",
+				"estrela":"TRUE"
 			}
 		]},
 		{
@@ -188,7 +206,7 @@
 		},
 		{
 			"nome":"",
-			"apelido":"Monecone",
+			"apelido":"Monicone",
 			"pontuacao":"1",
 			"img":"",
 			"conisses":[]
