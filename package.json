@@ -4,7 +4,7 @@
   "description": "Para sua conisse diária!",
   "main": "index.js",
   "scripts": {
-    "minifica":"node minifier.js",
+    "minifica": "node minifier.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
