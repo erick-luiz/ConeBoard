@@ -11,6 +11,26 @@ Date.prototype.getMYFormatted = function(){
 	return m + "/" + this.getFullYear()
 }
 
+// Adjusty input Date 
+
+var dateAdjustify = function(){
+
+	var inputDate = document.querySelector('#coneForm input[type=date]')
+	
+	if(inputDate){
+		inputDate.min = new Date().getDataFormatada().replace(/(\d{4}\-\d{2}\-)\d{2}/,"$101")
+		inputDate.max = new Date().getDataFormatada()
+	}
+}
+
+init = function(){
+	dateAdjustify();
+}
+
+init()
+
+
+
 var apiConeBoard = "https://apicone.herokuapp.com/";
 //var apiConeBoard = "http://localhost:8080/";
 
@@ -92,6 +112,8 @@ function getDados(callback){
 
 var sendRequest = function(url, data, done, err){
 
+	var key = prompt("Insara a chave de cadastro");
+
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = function() {
 		
@@ -100,17 +122,17 @@ var sendRequest = function(url, data, done, err){
 			if(typeof done === 'function'){
 				done(dados);
 			}
-		}
-
-		if (this.readyState == 4 && this.status != 200){
+		}else if (this.readyState == 4 && this.status != 200){
+			var data = JSON.parse(this.responseText)
+			
 			if(typeof err === 'function'){
-				err(dados);
+				err(data);
 			}
 		}
 	}; 
 	request.open('POST', url, true);
 	request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-	request.send(JSON.stringify(data));
+	request.send(JSON.stringify({key:key,data:data}));
 }	  
 
 function coneBoardViewModel(){
@@ -162,10 +184,7 @@ function coneBoardViewModel(){
 
 	this.maxPontuacao = 10;
 	self.getPorcentagem = function(p){
-		if(!p) {
-			console.warn('Pontuacao indefinida para calculo!'); 
-			return "0%";
-		}
+		if(!p) return "0%";
 		return ((p/self.maxPontuacao)*100)+'%';;
 	}
 
@@ -211,6 +230,7 @@ ko.applyBindings(new coneBoardViewModel());
 
 var sendData = function(){
 	var form = document.querySelector("#coneForm")
+	
 	select = form.querySelector('select');
 	apelido = select[select.selectedIndex].text,
 	
@@ -220,9 +240,10 @@ var sendData = function(){
 		titulo: form.querySelector('input[name=titulo]').value, 
 		estrelado: form.querySelector('input[type=checkbox]').checked
 	}
+	
 	sendRequest(apiConeBoard + "Cone/" + apelido + "/addPoint", data, 
-		function(data){location.reload()},
-		function(msg){console.log(msg)});
+		function(){location.reload()},
+		function(err){alert(err.message)});
 
 }
 
@@ -234,9 +255,10 @@ var registerCone = function(){
 		nickname: form.querySelector('input[name=nickname]').value, 
 		img: form.querySelector('input[name=image]').value
 	}
+	
 	sendRequest(apiConeBoard + "Cone/create", data, 
-		function(data){location.reload()},
-		function(msg){console.log(msg.error)});
-
-	console.log(data);
+		function(){location.reload()},
+		function(err){alert(err.message)});
 }
+
+
