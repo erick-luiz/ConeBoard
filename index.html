@@ -226,6 +226,50 @@
 					</section>
 					<!-- /ko  -->
 
+					<!-- *** Formulario de cadastro login / registro *** -->
+				<!-- ko if:dash() == 'login' -->
+				<section class="row">
+					<div class="col-sm-12">
+						<section class="row">
+							<div class="col-12">
+								<div class="card mb-4">
+									<div class="card-block">
+										<h3 class="card-title">Cadastro de Cone</h3>
+
+										<form class="form" id="registerConeForm" enctype="multipart/form-data" role="form">
+
+											<div class="form-group row">
+												<label class="col-md-3 col-form-label">Nome</label>
+												<div class="col-md-9">
+													<input type="text" name="name" class="form-control">
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label class="col-md-3 col-form-label">Apelido</label>
+												<div class="col-md-9">
+													<input type="text" name="nickname" class="form-control">
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label class="col-md-3 col-form-label">Imagem</label>
+												<div class="col-md-9">
+													<input type="text" name="image" class="form-control">
+												</div>
+											</div>
+	
+											<button class="btn btn-primary" 
+											type="submit" data-bind="click: registerCone">Cadastrar</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</section>
+				<!-- /ko  -->
+
 						<section class="row">
 							<div class="col-12 mt-1 mb-4">Idealizado por Bernardo Silva, eterno BernaCone lol !</div>
 						</section>
@@ -262,16 +306,14 @@
 	<script type="text/html" id="template-vencedores">
 		<div  class="card-block">
 		<span data-bind="text:'Mês ' + mes"></span>
-		<!-- ko foreach: vencedores-->
 		<div class="user-progress justify-center">
 			<div class="col-sm-3 col-md-2" style="padding: 0;">
 				<img data-bind="attr:{src: $root.ajustaImagem(img)}" alt="profile photo" class="circle profile-photo" style="width: 100%; max-width: 100px;">
 			</div>
 			<div class="col-sm-9 col-md-10">
-				<h6 class="pt-1" data-bind="text:name"></h6>
+				<h6 class="pt-1" data-bind="text:apelido"></h6>
 			</div>
 		</div>
-		<!-- /ko -->
 		<div class="clear"></div>
 		</div>
 	</script>

@@ -53,15 +53,15 @@ var cones = [];
 
 var regexImg = new RegExp(/(^data)/i);
 
-function Cone(nome, apelido,img, pontuacao, conisses){
+function Cone(nome, apelido,img, pontuacao, conisses, id){
  	
  	// self = this;
+ 	this.id = id;
 	this.nome = nome || '';
 	this.apelido = apelido || '';
 	this.conissesVisivel = ko.observable(false);
 
-
-	if(regexImg.test(img)){
+	if(img && img.match(/https?\:\/\/[\s\S]*/) || regexImg.test(img)){
 		this.img = img;
 	}else{
 		var img = img == '' || !img ? 'default.jpg':img;
@@ -110,6 +110,23 @@ function getDados(callback){
 	xhttp.send();
 }
 
+function getWinners(callback){
+	var url = apiConeBoard + "Cone/winnerMonth";
+	var xhttp = new XMLHttpRequest();
+	
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var winners = JSON.parse(this.responseText);
+			if(typeof callback === 'function'){
+				callback(winners);
+			}
+		}
+	}; 
+	
+	xhttp.open("GET", url, true);
+	xhttp.send();
+}
+
 var sendRequest = function(url, data, done, err){
 
 	var key = prompt("Insara a chave de cadastro");
@@ -142,7 +159,7 @@ function coneBoardViewModel(){
 	self.date = new Date().getMYFormatted();
 
 	this.cones =  ko.observableArray([]);
-	self.vencedores = ko.observableArray([]);
+	this.vencedores = ko.observableArray([]);
 	self.mesVigente = ko.observable(parseInt(new Date().getMonth() + 1));
 	getDados(function(){
 		for(var i = 0; i < dados.cones.length; i++){
@@ -151,7 +168,8 @@ function coneBoardViewModel(){
 				dados.cones[i].nickname,
 				dados.cones[i].img,
 				dados.cones[i].points.length,
-				dados.cones[i].points
+				dados.cones[i].points,
+				dados.cones[i]._id
 			));
 		}
 		var cones = self.cones(); 
@@ -159,9 +177,30 @@ function coneBoardViewModel(){
 			return a.pontuacao() < b.pontuacao()?1:-1;;
 		});
 		self.cones(cones);
-		self.vencedores(dados.historicoDeResultados);
+		getWinners(function(winners){
+    		arrWinners = winners["winnersCones"];
+    		
+    		var localCones = [];
+    		var vencedoresPorMes = {};
+    		for (var i = 0; i < 3; i++) {
+    			for (var j = 0; j < arrWinners[i].cones.length ; j++) {
+    				localCones.push(arrWinners[i].cones[j])
+    				vencedoresPorMes[arrWinners[i].cones[j]] = arrWinners[i].dateMonth
+    			}
+    		}
+  			var vencedores = []
+    		cones.forEach(function(cone){
+    				if(localCones.indexOf(cone.id) != -1){
+    					cone.mes = vencedoresPorMes[cone.id]
+    					vencedores.push(cone);
+    				}
+    		});
+    		self.vencedores(vencedores);
+    	});
 	});
 	
+    
+
 	self.dash = ko.observable("cones"); 
 	self.setDash = function(){
 		//console.log(element.getProperty('name'))
@@ -203,7 +242,9 @@ function coneBoardViewModel(){
 		return apelido;
 	}
 	self.ajustaImagem = function(img){
-		if(img && img !== ''){
+		if(img.match(/https?\:\/\/[\s\S]*/)){
+			return img;
+		}else if(img && img !== ''){
 			return self.pathImage + img;
 		}else{
 			return self.pathImage + 'default.jpg';
