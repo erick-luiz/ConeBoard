@@ -1,43 +1,48 @@
-$('.form').find('input, textarea').on('keyup blur focus', function (e) {
-  
-  var $this = $(this),
-      label = $this.prev('label');
+var loginSystem = (function(apiRequest, urlRegister){
 
-	  if (e.type === 'keyup') {
-			if ($this.val() === '') {
-          label.removeClass('active highlight');
-        } else {
-          label.addClass('active highlight');
-        }
-    } else if (e.type === 'blur') {
-    	if( $this.val() === '' ) {
-    		label.removeClass('active highlight'); 
-			} else {
-		    label.removeClass('highlight');   
-			}   
-    } else if (e.type === 'focus') {
-      
-      if( $this.val() === '' ) {
-    		label.removeClass('highlight'); 
-			} 
-      else if( $this.val() !== '' ) {
-		    label.addClass('highlight');
-			}
-    }
+	
+	
 
-});
+	var login = function(e){
+		e.preventDefault();
+		var email = this.querySelector('input[name=email]').value;
+		var pass  = this.querySelector('input[name=password]').value;
 
-$('.tab a').on('click', function (e) {
-  
-  e.preventDefault();
-  
-  $(this).parent().addClass('active');
-  $(this).parent().siblings().removeClass('active');
-  
-  target = $(this).attr('href');
+		var data = { "user": {"email": email, "password":pass}}
+		
+		var url = urlRegister.urlBase + urlRegister.getLogin;
+		apiRequest.postData(url, data, function(data){
+			console.log(data);
+		},  function(err){
+			console.log(err);
+		});
 
-  $('.tab-content > div').not(target).hide();
-  
-  $(target).fadeIn(600);
-  
-});
+	}
+
+	var LoginErr = function(){
+
+	}
+
+	var app = new Vue({
+	  el: '#app',
+	  data: {
+	    message: 'Hello Vue!',
+	    logged: false
+	  }
+	})
+
+	var loginForm = document.querySelector("#login");
+
+	addEvents = function(){
+		loginForm.addEventListener('submit', login);
+	}
+
+	init = function(){
+		addEvents();
+	}
+
+	init();
+	//apiRequest.postData();
+
+})(apiRequest, urlRegister);
+

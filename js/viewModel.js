@@ -182,10 +182,13 @@ function coneBoardViewModel(){
     		
     		var localCones = [];
     		var vencedoresPorMes = {};
-    		for (var i = 0; i < 3; i++) {
+    		for (var i = 0; i < arrWinners.length; i++) {
     			for (var j = 0; j < arrWinners[i].cones.length ; j++) {
     				localCones.push(arrWinners[i].cones[j])
-    				vencedoresPorMes[arrWinners[i].cones[j]] = arrWinners[i].dateMonth
+    				if(!vencedoresPorMes[arrWinners[i].cones[j]]){
+    					vencedoresPorMes[arrWinners[i].cones[j]] = []
+    				}
+    				vencedoresPorMes[arrWinners[i].cones[j]].push(arrWinners[i].dateMonth)
     			}
     		}
   			var vencedores = []

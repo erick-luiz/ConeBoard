@@ -1,5 +1,9 @@
 var minifier = require('minifier')
-var input =  ['./js/viewModel.js']
+var input =  [
+	'./js/url-register.js',
+	'./js/apiRequest.js',
+	'./js/viewModel.js',
+	'./js/login.js']
 
 minifier.on('error', function(err) {
 	// handle any potential error
